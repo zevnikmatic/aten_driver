@@ -188,6 +188,6 @@ for x in range (12,19):
 		else:
 			print(bashCommand[x] +Fore.GREEN + "......complete" + Fore.WHITE)
 			
-process = subprocess.Popen(bashCommand[20], shell=True)
+process = subprocess.Popen(bashCommand[19], shell=True)
 
 print(Fore.GREEN +"uspešo zaključno počakaj da se beaglebone resetira in preglej če vse dela kot mora" + Fore.WHITE)
