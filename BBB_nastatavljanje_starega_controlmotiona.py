@@ -45,7 +45,6 @@ bashCommand = []
 bashCommand.append('echo {} | sudo -S {}'.format(pwd,cmd))
 bashCommand.append("sudo apt-get update")
 bashCommand.append("sudo apt install linux-headers-$(uname -r)")
-bashCommand.append("git clone https://github.com/zevnikmatic/aten_driver.git")
 bashCommand.append("make all -C aten_driver")
 bashCommand.append("sudo xz aten_driver/pl2303.ko")
 bashCommand.append("sudo cp aten_driver/pl2303.ko.xz /lib/modules/$(uname -r)/kernel/drivers/usb/serial")
@@ -65,7 +64,7 @@ bashCommand.append("sudo reboot")
 
 #subprocess.call('echo {} | sudo -S {}'.format(pwd, cmd), shell=True, stdout=subprocess.PIPE)
 
-for x in range(10):
+for x in range(9):
 
 	process = subprocess.Popen(bashCommand[x], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	y=0
@@ -111,7 +110,7 @@ for x in range(10):
 			print(bashCommand[x] +Fore.GREEN + "......complete" + Fore.WHITE)
 			
 			
-for x in range(10,12):
+for x in range(9,11):
 	process = subprocess.Popen(bashCommand[x], shell=True)
 	data = process.poll()
 	if len(bashCommand[x])>40:
@@ -144,7 +143,7 @@ input(Fore.GREEN +"                         press ENTER to continue")
 print(Fore.WHITE +" ")
 print(" ")
 
-for x in range (12,19):
+for x in range (11,18):
 	process = subprocess.Popen(bashCommand[x], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	y=0
 	data = process.poll()
@@ -188,6 +187,6 @@ for x in range (12,19):
 		else:
 			print(bashCommand[x] +Fore.GREEN + "......complete" + Fore.WHITE)
 			
-process = subprocess.Popen(bashCommand[19], shell=True)
+process = subprocess.Popen(bashCommand[18], shell=True)
 
 print(Fore.GREEN +"uspešo zaključno počakaj da se beaglebone resetira in preglej če vse dela kot mora" + Fore.WHITE)
