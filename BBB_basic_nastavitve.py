@@ -52,8 +52,6 @@ bashCommand.append("sudo cp aten_driver/pl2303.ko.xz /lib/modules/$(uname -r)/ke
 bashCommand.append("sudo sed -i '4 apl2303' /etc/modules")
 bashCommand.append("sudo sed -i 's/beaglebone/{}-beaglebone/g'  /etc/hostname".format(XXXX))
 bashCommand.append("connmanctl config $(connmanctl services | grep Wired | awk -F' ' '{ print $3 }') ipv4 manual 172.25.128.4 255.255.255.240 172.25.128.1")
-bashCommand.append("sudo rm aten_driver/controlmotion_1.1.63_armhf.snap")
-bashCommand.append("sudo rm aten_driver/controlmotion_1.1.63.4_armhf.snap")
 bashCommand.append("connmanctl config $(connmanctl services | grep Wired | awk -F' ' '{ print $3 }') --nameservers 8.8.8.8 172.25.128.1")
 bashCommand.append("sudo sed -i 's/localhost/beaglebone/g' /etc/hosts")
 bashCommand.append("sudo sed -i 's/beaglebone/{}-beaglebone/g' /etc/hosts".format(XXXX))
@@ -61,7 +59,7 @@ bashCommand.append("sudo reboot")
 
 #subprocess.call('echo {} | sudo -S {}'.format(pwd, cmd), shell=True, stdout=subprocess.PIPE)
 
-for x in range(15):
+for x in range(13):
 
 	process = subprocess.Popen(bashCommand[x], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	y=0
@@ -107,6 +105,6 @@ for x in range(15):
 			print(bashCommand[x] +Fore.GREEN + "......complete" + Fore.WHITE)
 			
 			
-process = subprocess.Popen(bashCommand[15], shell=True)
+process = subprocess.Popen(bashCommand[13], shell=True)
 
 print(Fore.GREEN +"uspešo zaključno počakaj da se beaglebone resetira in preglej če vse dela kot mora" + Fore.WHITE)
